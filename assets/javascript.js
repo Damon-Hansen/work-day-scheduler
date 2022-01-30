@@ -9,15 +9,16 @@
 // THEN the text for that event is saved in local storage
 // WHEN I refresh the page
 // THEN the saved events persist
-
+function updateTime(){
     $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
+};
 
 function clickHandler() {
     var data = $(this).siblings("textarea");
     var userInput = data.val();
     var id = data.attr("id");
     localStorage.setItem(id, userInput);
-}
+};
 
     $(".time-block").each(function() {
         var hourEl = parseInt($(this).children("textarea").attr("id"));
@@ -31,16 +32,21 @@ function clickHandler() {
         else {
             $(this).addClass("future")
         }
-    }) 
-
-
-
+    });
 
     $("#9").val(localStorage.getItem("9"))
     $("#10").val(localStorage.getItem("10"))
-
-
-
+    $("#11").val(localStorage.getItem("11"))
+    $("#12").val(localStorage.getItem("12"))
+    $("#13").val(localStorage.getItem("13"))
+    $("#14").val(localStorage.getItem("14"))
+    $("#15").val(localStorage.getItem("15"))
+    $("#16").val(localStorage.getItem("16"))
+    $("#17").val(localStorage.getItem("17"))
 
     $(".saveBtn").click(clickHandler)
- 
+
+    updateTime();
+    setInterval(function(){
+        updateTime();
+    },1000);
